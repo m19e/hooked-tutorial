@@ -2,6 +2,16 @@ import React, { useState } from "react";
 
 const Text = (): JSX.Element => {
     const [text, setText] = useState("");
+
+    const getCaretPos = (txt: string, i: number): any => {
+        const ahead = txt.slice(0, i);
+        const r = (ahead.match(/\n/g) || []).length;
+        let c = ahead.split("").reverse().indexOf("\n");
+        if (c < 0) c = i;
+
+        return { r: r, c: c };
+    };
+
     const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
         setText(e.target.value);
     };
@@ -32,6 +42,8 @@ const Text = (): JSX.Element => {
                 default:
                     break;
             }
+
+            console.log(JSON.stringify(getCaretPos(text, start)));
         }
     };
 
