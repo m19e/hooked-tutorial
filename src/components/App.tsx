@@ -3,6 +3,7 @@ import "./App.css";
 import Header from "./Header";
 import Movie from "./Movie";
 import Search from "./Search";
+import Text from "./Text";
 
 const MOVIE_API_URL = "http://www.omdbapi.com/?s=paranormal&apikey=82b14814";
 
@@ -41,6 +42,7 @@ const App = () => {
         <div className="App">
             <Header text="HOOKED" />
             <Search search={search} />
+            <Text />
             <p className="movies">
                 {loading && !errorMessage ? (
                     <span>loading...</span>
