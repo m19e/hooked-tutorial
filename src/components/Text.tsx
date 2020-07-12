@@ -7,15 +7,15 @@ const initialPosition = {
 
 const Text = (): JSX.Element => {
     const [text, setText] = useState("");
-    const [position, setPosition] = useState({ r: 0, c: 0 });
+    const [position, setPosition] = useState(initialPosition);
 
     const getCaretPos = (draft: string, i: number): any => {
         const ahead = draft.slice(0, i);
-        const r = (ahead.match(/\n/g) || []).length;
-        let c = ahead.split("").reverse().indexOf("\n");
-        if (c < 0) c = i;
+        const y = (ahead.match(/\n/g) || []).length;
+        let x = ahead.split("").reverse().indexOf("\n");
+        if (x < 0) x = i;
 
-        return { r: r, c: c };
+        return { y: y, x: x };
     };
 
     const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
