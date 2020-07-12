@@ -9,7 +9,7 @@ const Text = (): JSX.Element => {
     const [text, setText] = useState("");
     const [position, setPosition] = useState(initialPosition);
 
-    const getCaretPos = (draft: string, i: number): any => {
+    const getPosition = (draft: string, i: number): any => {
         const ahead = draft.slice(0, i);
         const y = (ahead.match(/\n/g) || []).length;
         let x = ahead.split("").reverse().indexOf("\n");
@@ -22,7 +22,7 @@ const Text = (): JSX.Element => {
         setText(e.target.value);
         const ta = e.target as HTMLTextAreaElement;
         const start = ta.selectionStart;
-        setPosition(getCaretPos(e.target.value, start));
+        setPosition(getPosition(e.target.value, start));
     };
 
     const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
@@ -52,7 +52,7 @@ const Text = (): JSX.Element => {
                     break;
             }
 
-            console.log(JSON.stringify(getCaretPos(text, start)));
+            console.log(JSON.stringify(getPosition(text, start)));
         }
     };
 
