@@ -15,6 +15,9 @@ const Text = (): JSX.Element => {
 
     const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
         setText(e.target.value);
+        const ta = e.target as HTMLTextAreaElement;
+        const start = ta.selectionStart;
+        setPosition(getCaretPos(e.target.value, start));
     };
 
     const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
