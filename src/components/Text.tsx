@@ -2,9 +2,10 @@ import React, { useState } from "react";
 
 const Text = (): JSX.Element => {
     const [text, setText] = useState("");
+    const [position, setPosition] = useState({ r: 0, c: 0 });
 
-    const getCaretPos = (txt: string, i: number): any => {
-        const ahead = txt.slice(0, i);
+    const getCaretPos = (draft: string, i: number): any => {
+        const ahead = draft.slice(0, i);
         const r = (ahead.match(/\n/g) || []).length;
         let c = ahead.split("").reverse().indexOf("\n");
         if (c < 0) c = i;
