@@ -51,9 +51,7 @@ const Text = (): JSX.Element => {
         }
     };
 
-    return (
-        <textarea onChange={handleChange} onKeyDown={handleKeyDown}></textarea>
-    );
+    return <textarea onChange={handleChange} onKeyDown={handleKeyDown} />;
 };
 
 export default Text;
