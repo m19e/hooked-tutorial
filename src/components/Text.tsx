@@ -1,5 +1,10 @@
 import React, { useState } from "react";
 
+const initialPosition = {
+    y: 0,
+    x: 0,
+};
+
 const Text = (): JSX.Element => {
     const [text, setText] = useState("");
     const [position, setPosition] = useState({ r: 0, c: 0 });
