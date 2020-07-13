@@ -41,9 +41,9 @@ const App = () => {
     return (
         <div className="App">
             <Header text="HOOKED" />
-            <Search search={search} />
+            {/* <Search search={search} /> */}
             <Text />
-            <p className="movies">
+            {/* <p className="movies">
                 {loading && !errorMessage ? (
                     <span>loading...</span>
                 ) : errorMessage ? (
@@ -53,7 +53,7 @@ const App = () => {
                         <Movie key={`${index}-${movie.Title}`} movie={movie} />
                     ))
                 )}
-            </p>
+            </p> */}
         </div>
     );
 };
