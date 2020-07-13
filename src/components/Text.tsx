@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./Text.css";
 
 const initialPosition = {
     y: 0,
@@ -69,7 +70,17 @@ const Text = (): JSX.Element => {
         }
     };
 
-    return <textarea onChange={handleChange} onKeyDown={handleKeyDown} />;
+    return (
+        <div className="tate">
+            <textarea
+                className="input"
+                rows={20}
+                cols={40}
+                onChange={handleChange}
+                onKeyDown={handleKeyDown}
+            />
+        </div>
+    );
 };
 
 export default Text;
