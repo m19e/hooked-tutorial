@@ -39,8 +39,9 @@ const Text = (): JSX.Element => {
             const ta = e.target as HTMLTextAreaElement;
             const start = ta.selectionStart;
             const end = ta.selectionEnd;
+            const { y, x } = getPosition(text, start);
 
-            console.log(`Now  => start: ${start}, end: ${end}`);
+            // console.log(`Now  => start: ${start}, end: ${end}`);
 
             switch (e.key) {
                 case "ArrowDown":
@@ -51,15 +52,19 @@ const Text = (): JSX.Element => {
                     ta.setSelectionRange(start - 1, start - 1);
                     break;
                 case "ArrowLeft":
+                    const next = getNextSelection(text, y + 1, x);
+                    ta.setSelectionRange(next, next);
                     break;
                 case "ArrowRight":
+                    const prev = getNextSelection(text, y - 1, x);
+                    ta.setSelectionRange(prev, prev);
                     break;
                 default:
                     break;
             }
-            console.log(
-                `Step => start: ${ta.selectionStart}, end: ${ta.selectionEnd}`
-            );
+            // console.log(
+            //     `Step => start: ${ta.selectionStart}, end: ${ta.selectionEnd}`
+            // );
             console.log(JSON.stringify(getPosition(text, ta.selectionStart)));
         }
     };
