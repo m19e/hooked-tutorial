@@ -34,7 +34,7 @@ const Text = (): JSX.Element => {
             const start = ta.selectionStart;
             const end = ta.selectionEnd;
 
-            console.log(`start: ${start}, end: ${end}`);
+            console.log(`Now  => start: ${start}, end: ${end}`);
 
             switch (e.key) {
                 case "ArrowDown":
@@ -51,8 +51,10 @@ const Text = (): JSX.Element => {
                 default:
                     break;
             }
-
-            console.log(JSON.stringify(getPosition(text, start)));
+            console.log(
+                `Step => start: ${ta.selectionStart}, end: ${ta.selectionEnd}`
+            );
+            console.log(JSON.stringify(getPosition(text, ta.selectionStart)));
         }
     };
 
