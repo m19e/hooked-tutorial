@@ -9,6 +9,7 @@ const initialPosition = {
 const Text = (): JSX.Element => {
     const [text, setText] = useState("");
     const [position, setPosition] = useState(initialPosition);
+    const [arrow, setArrow] = useState("◇");
 
     const getPosition = (draft: string, i: number): any => {
         const ahead = draft.slice(0, i);
@@ -46,17 +47,21 @@ const Text = (): JSX.Element => {
 
             switch (e.key) {
                 case "ArrowDown":
+                    setArrow("↓");
                     ta.setSelectionRange(start + 1, start + 1);
                     break;
                 case "ArrowUp":
+                    setArrow("↑");
                     if (start === 0) return;
                     ta.setSelectionRange(start - 1, start - 1);
                     break;
                 case "ArrowLeft":
+                    setArrow("←");
                     const next = getNextSelection(text, y + 1, x);
                     ta.setSelectionRange(next, next);
                     break;
                 case "ArrowRight":
+                    setArrow("→");
                     const prev = getNextSelection(text, y - 1, x);
                     ta.setSelectionRange(prev, prev);
                     break;
@@ -66,14 +71,17 @@ const Text = (): JSX.Element => {
             // console.log(
             //     `Step => start: ${ta.selectionStart}, end: ${ta.selectionEnd}`
             // );
-            console.log(JSON.stringify(getPosition(text, ta.selectionStart)));
+            // console.log(JSON.stringify(getPosition(text, ta.selectionStart)));
+            setPosition(getPosition(text, ta.selectionStart));
         }
     };
 
     return (
-        <div className="tate">
+        <div>
+            <h2>{arrow}</h2>
+            <h3>{JSON.stringify({ x: position.y, y: position.x })}</h3>
             <textarea
-                className="input"
+                className="tate"
                 rows={20}
                 cols={40}
                 onChange={handleChange}

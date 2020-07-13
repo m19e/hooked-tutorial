@@ -1,9 +1,4 @@
 .tate {
     writing-mode: vertical-rl;
-}
-
-.tate > .input {
-    margin-left: 35vw;
-    margin-top: 5vh;
     text-orientation: upright;
 }
