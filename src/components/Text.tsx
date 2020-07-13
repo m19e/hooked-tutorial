@@ -18,6 +18,12 @@ const Text = (): JSX.Element => {
         return { y: y, x: x };
     };
 
+    const getNextSelection = (draft: string, y: number, x: number): number => {
+        const next = draft.split("\n").slice(0, y).join("");
+        if (y === 0 && next.length === 0) return 0;
+        return next.length + y + x;
+    };
+
     const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
         setText(e.target.value);
         const ta = e.target as HTMLTextAreaElement;
