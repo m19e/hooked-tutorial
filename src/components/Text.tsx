@@ -20,7 +20,7 @@ const Text = (): JSX.Element => {
 
     const getNextSelection = (draft: string, y: number, x: number): number => {
         const next = draft.split("\n").slice(0, y).join("");
-        if (y === 0 && next.length === 0) return 0;
+        if (y < 0) return 0;
         return next.length + y + x;
     };
 
